@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Drawing;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,27 +7,31 @@ public class TileAction : MonoBehaviour
 {
     public SpriteRenderer _Color;
     public int scoreValue = 1;
-            
-    // Start is called before the first frame update
-    void Start()
+    public AudioClip touchSound;
+    private bool isClicked;
+
+    private void Start()
     {
-        
+        isClicked = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnMouseOver()
     {
-        
-    }
-
-    private void OnMouseOver()
-    {
-        FindObjectOfType<Score>().ScoreUpdate(scoreValue);
+        if (Input.GetMouseButtonDown(0) && !isClicked)
+        {
+            AudioSource.PlayClipAtPoint(touchSound, transform.position);
+            _Color.color = Color.yellow;
+            FindObjectOfType<Score>().ScoreUpdate(scoreValue);
+            isClicked = true;
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (_Color.color == UnityEngine.Color.yellow) { Debug.Log("bien ahi"); }
+        if (_Color.color == Color.yellow) 
+        { 
+            //Debug.Log("bien ahi"); 
+        }
         else if(collision.collider.tag == "Border")
         {
             //Debug.Log("Game Over");

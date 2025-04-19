@@ -9,6 +9,8 @@ public class SpawnerAction : MonoBehaviour
     //private int tiles = 0;
     public GameObject pianoTile;
     private float tileDelay = 0.5f;
+    public float minY = 0f;
+    public float maxY = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,9 +36,11 @@ public class SpawnerAction : MonoBehaviour
     void SpawnUntil()
     {
         Transform position = FreePosition();
+        float randomNumber = Random.Range(minY, maxY);
+        Vector3 tileOffset = new Vector3( 0, randomNumber, 0);
         if (position)
         {
-            GameObject tile = Instantiate(pianoTile, position.transform.position, Quaternion.identity);
+            GameObject tile = Instantiate(pianoTile, position.transform.position + tileOffset, Quaternion.identity);
             tile.transform.parent = position;
         }
 
@@ -66,7 +70,7 @@ public class SpawnerAction : MonoBehaviour
 
         foreach (Transform child in transform)
         {
-            if (child.childCount > 0)
+            if (child.childCount > 1)
             {
                 return false;
             }
