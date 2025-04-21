@@ -15,7 +15,7 @@ public class ButtonLogic : MonoBehaviour
         Application.Quit();
     }
 
-    //public void AboutUs()
+    //public void Levels()
     //{
     //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
     //}

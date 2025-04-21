@@ -1,58 +1,43 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
-using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.EnhancedTouch;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class TouchHandler : MonoBehaviour
 {
-    [SerializeField] private Camera cam;
+    public static TouchHandler Instance;
+    public Action<Vector3> OnTouch;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        if (cam == null)
-        {
-            cam = Camera.main;
-        }
+        if (Instance != null && Instance != this) Destroy(this);
+        else Instance = this;
+        EnhancedTouchSupport.Enable();
     }
 
-    private void OnDisable()
-    {
-        EnhancedTouchSupport.Disable();
-    }
+    private void OnDisable() { EnhancedTouchSupport.Disable(); }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        //if ((Touchscreen.current != null) && Touchscreen.current.primaryTouch.press.isPressed)
         if (Touch.activeTouches.Count > 0)
         {
-            //Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
             Touch activeTouch = Touch.activeTouches[0];
-            Vector2 touchPos = activeTouch.screenPosition;
+            Vector3 worldPos = Camera.main.ScreenToWorldPoint(
+                new Vector3(
+                    activeTouch.screenPosition.x,
+                    activeTouch.screenPosition.y,
+                    -Camera.main.transform.position.z
+                )
+            );
 
-            Vector2 worldPos = cam.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, cam.nearClipPlane));
-            Debug.Log("Touch Position: " + worldPos);
+            Vector2 worldPos2D = new Vector2(worldPos.x, worldPos.y);
+            RaycastHit2D hit = Physics2D.Raycast(worldPos2D, Vector2.zero);
 
-            transform.position = worldPos;
+            if (hit.collider != null)
+            {
+                TileAction tile = hit.collider.GetComponent<TileAction>();
+                if (tile != null) { tile.OnTouch(); }
+            }
         }
-
-        // Codigo compatible con un for each de touches entrantes en la pantalla.
-        //foreach(Touch touch in Touch.activeTouches)
-        //{
-        //    if (touch.phase == 0) // podemos poner los distintos pahse... para evaluar
-        //    {
-
-        //    }
-        //    else
-        //    {
-
-        //    }
-
-        //    // decidimos que hacer con los touches... cuando los queremos gestionar..
-        //texto
-        //}
     }
 }

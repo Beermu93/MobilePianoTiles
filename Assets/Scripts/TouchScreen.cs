@@ -9,7 +9,8 @@ public class TouchController : MonoBehaviour
             mainCamera = Camera.main;
     }
     private void Update()
-    {        // Verificar si hay toques en la pantallaif (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
+    {        // Verificar si hay toques en la pantalla
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
         {
             // Obtener la posición del toque
             Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
@@ -18,6 +19,10 @@ public class TouchController : MonoBehaviour
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, mainCamera.nearClipPlane));
             worldPosition.z = 0; // Para un juego 2D// Mover el objeto a la posición del toque
             transform.position = worldPosition;
+        }
+        else
+        {
+            transform.position = new Vector3(-10, 0, 0);
         }
     }
 }

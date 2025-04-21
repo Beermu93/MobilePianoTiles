@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class SpawnerAction : MonoBehaviour
 {
-    public float width = 4.15f;
-    public float height = 2.6f;
-    //private int tiles = 0;
-    public GameObject pianoTile;
+    [SerializeField] private float width = 4.15f;
+    [SerializeField] private float height = 2.6f;
+    [SerializeField] private GameObject pianoTile;
     private float tileDelay = 0.5f;
-    public float minY = 0f;
-    public float maxY = 5f;
+    [SerializeField] private float minY = 0f;
+    [SerializeField] private float maxY = 5f;
 
     // Start is called before the first frame update
     void Start()
     {
         SpawnUntil();
-        //Destroyer.OnPianoDestroyed += CheckForEmpty;
     }
 
     private void OnDrawGizmos()
@@ -49,25 +47,9 @@ public class SpawnerAction : MonoBehaviour
             Invoke("SpawnUntil", tileDelay);
         }
     }
-    void SpawnTiles()
-    {
-        foreach (Transform child in transform)
-        {
-            GameObject tile = Instantiate(pianoTile, child.position, Quaternion.identity);
-            tile.transform.parent = child;
-            //tiles++;
-        }
-    }
 
      bool CheckForEmpty()
     {
-        //tiles--;
-
-        //if (tiles <= 0)
-        //{
-        //    SpawnUntil();
-        //}
-
         foreach (Transform child in transform)
         {
             if (child.childCount > 1)
@@ -88,10 +70,5 @@ public class SpawnerAction : MonoBehaviour
             }
         }
         return null;
-    }
-
-    private void OnDisable()
-    {
-        //Destroyer.OnPianoDestroyed -= CheckForEmpty;
     }
 }

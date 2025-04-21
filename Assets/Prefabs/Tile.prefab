@@ -10,10 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1608137991653850066}
   - component: {fileID: 2626014329724511392}
-  - component: {fileID: 8702294843331644634}
+  - component: {fileID: 4224939151573943252}
   - component: {fileID: -1586980348130565626}
   - component: {fileID: -2598137535183272354}
-  - component: {fileID: 4224939151573943252}
   m_Layer: 6
   m_Name: Tile
   m_TagString: Untagged
@@ -88,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8702294843331644634
+--- !u!114 &4224939151573943252
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -97,10 +96,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 621569041165522253}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c35cc9f997060645b7e237bb74fcfa9, type: 3}
+  m_Script: {fileID: 11500000, guid: b20655ff3ec0e70489081e475878e772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   Speed: 5
+  scoreValue: 1
+  touchSound: {fileID: 8300000, guid: 56e93c5281880f74fb4a09f5bcd38457, type: 3}
 --- !u!61 &-1586980348130565626
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,7 +131,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -173,18 +174,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &4224939151573943252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 621569041165522253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b20655ff3ec0e70489081e475878e772, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _Color: {fileID: 2626014329724511392}
-  scoreValue: 1
-  touchSound: {fileID: 8300000, guid: 56e93c5281880f74fb4a09f5bcd38457, type: 3}

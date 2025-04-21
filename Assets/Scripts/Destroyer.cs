@@ -2,17 +2,19 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Destroyer : MonoBehaviour
 {
-    //public static Action OnPianoDestroyed;
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        var tile = collision.gameObject.GetComponent<PianoTile>();
+        var tile = collision.gameObject.GetComponent<TileAction>();
         if (tile)
         {
-            //OnPianoDestroyed?.Invoke();
+            if(!tile.isClicked)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            }
             Destroy(tile.gameObject);
         }
     }
