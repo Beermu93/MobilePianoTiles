@@ -8,23 +8,26 @@ public class FinalScore : MonoBehaviour
 {
     public TMP_Text _text;
     public TMP_Text highScoreText;
-    public static int finalScore = 0;
-    public static int highScore = 0;
+    public int finalScore = 0;
+    public int highScore = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        //var lastScore = LoadScoreAsync();
+        LoadScoreAsync();
         finalScore = Score.scorePoints;
-        _text.text = finalScore.ToString("0");
-        if (highScore < finalScore)
-        {
-            highScore = finalScore;
-            highScoreText.text = highScore.ToString("0");
-            SaveScoreAsync();
-        }
+        _text.text = finalScore.ToString();
     }
     private async void SaveScoreAsync() { await CloudSaveSystem.SaveScoreAsync(highScore); }
 
-    private async void LoadScoreAsync() { await CloudSaveSystem.LoadHighScoreAsync(); }
+    private async void LoadScoreAsync() 
+    { 
+        highScore = await  CloudSaveSystem.LoadHighScoreAsync();
+        if (highScore < finalScore)
+        {
+            highScore = finalScore;
+            SaveScoreAsync();
+        }
+        highScoreText.text = highScore.ToString();
+    }
 }
