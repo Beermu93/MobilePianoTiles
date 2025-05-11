@@ -28,6 +28,7 @@ public class CloudSaveSystem : MonoBehaviour
 
     public static async Task SaveScoreAsync(int score)
     {
+        LocalSave.SaveLocal(score);
         await InitializeServicesAsync();
 
         int currentHighScore = await LoadHighScoreAsync();
@@ -67,6 +68,7 @@ public class CloudSaveSystem : MonoBehaviour
         catch (System.Exception ex)
         {
             Debug.LogError("Error cargando datos de la nube: " + ex.Message);
+            return LocalSave.LoadLocal();
         }
 
         return 0;

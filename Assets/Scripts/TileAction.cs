@@ -6,8 +6,14 @@ public class TileAction : MonoBehaviour
 {
     [SerializeField] private float Speed;
     [SerializeField] private int scoreValue = 1;
-    [SerializeField] private AudioClip touchSound;
+    [SerializeField] private List<AudioClip> audioClips = new List<AudioClip>();
+    private AudioSource audioSource;
     public bool isClicked { get; private set; } = false;
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();   
+    }
 
     void Update()
     {
@@ -20,9 +26,10 @@ public class TileAction : MonoBehaviour
 
         isClicked = true;
 
-        if (touchSound != null)
+        if (audioSource != null)
         {
-            AudioSource.PlayClipAtPoint(touchSound, transform.position);
+            AudioClip clip = audioClips[Random.Range(0,audioClips.Count)];
+            audioSource.PlayOneShot(clip);
             FindObjectOfType<Score>().ScoreUpdate(scoreValue);
         }
         gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
