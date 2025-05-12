@@ -6,7 +6,7 @@ public class TileAction : MonoBehaviour
 {
     [SerializeField] private float Speed;
     [SerializeField] private int scoreValue = 1;
-    [SerializeField] private List<AudioClip> audioClips = new List<AudioClip>();
+    [SerializeField] private List<AudioClip>audioClips = new List<AudioClip>();
     private AudioSource audioSource;
     public bool isClicked { get; private set; } = false;
 
@@ -29,7 +29,6 @@ public class TileAction : MonoBehaviour
         if (audioSource != null)
         {
             AudioClip clip = audioClips[Random.Range(0,audioClips.Count)];
-            audioSource.pitch = Random.Range(0.98f, 1.03f);
             audioSource.PlayOneShot(clip);
             FindObjectOfType<Score>().ScoreUpdate(scoreValue);
         }

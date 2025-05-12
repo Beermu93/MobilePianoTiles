@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
+using UnityEngine.SceneManagement;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class TouchHandler : MonoBehaviour
@@ -38,6 +39,10 @@ public class TouchHandler : MonoBehaviour
                 TileAction tile = hit.collider.GetComponent<TileAction>();
                 if (tile != null) { tile.OnTouch(); }
             }
+            else 
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+            } 
         }
     }
 }

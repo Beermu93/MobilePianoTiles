@@ -103,7 +103,9 @@ MonoBehaviour:
   Speed: 5
   scoreValue: 1
   audioClips:
-  - {fileID: 8300000, guid: 56e93c5281880f74fb4a09f5bcd38457, type: 3}
+  - {fileID: 8300000, guid: 4d35317dce201cc4ea1079be844a6f01, type: 3}
+  - {fileID: 8300000, guid: aa2ace50a80891240a5db6f64dd93b18, type: 3}
+  - {fileID: 8300000, guid: 2da8e0dc5ec11994f849ef2a8100ac6c, type: 3}
 --- !u!61 &-1586980348130565626
 BoxCollider2D:
   m_ObjectHideFlags: 0
