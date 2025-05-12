@@ -9,7 +9,7 @@ public class SpawnerAction : MonoBehaviour
     [SerializeField] private GameObject pianoTile;
     private float tileDelay = 0.5f;
     [SerializeField] private float minY = 0f;
-    [SerializeField] private float maxY = 5f;
+    [SerializeField] private float maxY = 8f;
 
     // Start is called before the first frame update
     void Start()

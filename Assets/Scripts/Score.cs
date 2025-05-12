@@ -10,6 +10,11 @@ public class Score : MonoBehaviour
     public static int scorePoints;
     public int currentScore;
 
+    private void Start()
+    {
+        scorePoints = 0;
+    }
+
     public void ScoreUpdate(int score)
     {
         currentScore += score;

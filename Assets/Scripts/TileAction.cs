@@ -17,7 +17,7 @@ public class TileAction : MonoBehaviour
 
     void Update()
     {
-        transform.Translate(Vector2.down * Speed * Time.deltaTime);
+        transform.Translate(Vector2.down * (Speed + 0.4f * Score.scorePoints) * Time.deltaTime);
     }
 
     public void OnTouch()
@@ -29,6 +29,7 @@ public class TileAction : MonoBehaviour
         if (audioSource != null)
         {
             AudioClip clip = audioClips[Random.Range(0,audioClips.Count)];
+            audioSource.pitch = Random.Range(0.98f, 1.03f);
             audioSource.PlayOneShot(clip);
             FindObjectOfType<Score>().ScoreUpdate(scoreValue);
         }
