@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.SceneManagement;
@@ -8,6 +9,7 @@ public class TouchHandler : MonoBehaviour
 {
     public static TouchHandler Instance;
     public Action<Vector3> OnTouch;
+    //public static Action OnLose;
 
     private void Awake()
     {
@@ -39,8 +41,9 @@ public class TouchHandler : MonoBehaviour
                 TileAction tile = hit.collider.GetComponent<TileAction>();
                 if (tile != null) { tile.OnTouch(); }
             }
-            else 
+            else if(Score.scorePoints != 0)
             {
+                //OnLose?.Invoke();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             } 
         }

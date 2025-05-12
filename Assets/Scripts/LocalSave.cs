@@ -14,14 +14,7 @@ public class GameData
 public static class LocalSave
 {
     private static string localPath => Application.persistentDataPath + "savedata.json";
-    public static void DeleteLocalData()
-    {
-        if (File.Exists(localPath))
-        {
-            File.Delete(localPath);
-            Debug.Log("Datos locales eliminados.");
-        }
-    }
+
     public static void SaveLocal(int score)
     {
         int currentLocal = LoadLocal();
