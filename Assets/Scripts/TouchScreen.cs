@@ -3,10 +3,13 @@ using UnityEngine.InputSystem;
 public class TouchController : MonoBehaviour
 {
     [SerializeField] private Camera mainCamera;
+    [SerializeField] ParticleSystem particle;
+    ParticleSystem.EmitParams emitSettings;
     private void Start()
     {
         if (mainCamera == null)
             mainCamera = Camera.main;
+        emitSettings = new ParticleSystem.EmitParams();
     }
     private void Update()
     {        // Verificar si hay toques en la pantalla
@@ -19,10 +22,8 @@ public class TouchController : MonoBehaviour
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, mainCamera.nearClipPlane));
             worldPosition.z = 0; // Para un juego 2D// Mover el objeto a la posición del toque
             transform.position = worldPosition;
-        }
-        else
-        {
-            transform.position = new Vector3(-10, 0, 0);
+            emitSettings.position = worldPosition;
+            particle.Emit(emitSettings, 5);
         }
     }
 }
