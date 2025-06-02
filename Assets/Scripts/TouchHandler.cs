@@ -1,15 +1,17 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.EnhancedTouch;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 using Touch = UnityEngine.InputSystem.EnhancedTouch.Touch;
 
 public class TouchHandler : MonoBehaviour
 {
     public static TouchHandler Instance;
     public Action<Vector3> OnTouch;
-    //public static Action OnLose;
+    [SerializeField] private RectTransform buttonRectTransform;
 
     private void Awake()
     {
@@ -25,6 +27,15 @@ public class TouchHandler : MonoBehaviour
         if (Touch.activeTouches.Count > 0)
         {
             Touch activeTouch = Touch.activeTouches[0];
+
+            if (RectTransformUtility.RectangleContainsScreenPoint(
+                    buttonRectTransform,
+                    activeTouch.screenPosition,
+                    Camera.main))
+            {
+                return;
+            }
+
             Vector3 worldPos = Camera.main.ScreenToWorldPoint(
                 new Vector3(
                     activeTouch.screenPosition.x,
@@ -41,11 +52,10 @@ public class TouchHandler : MonoBehaviour
                 TileAction tile = hit.collider.GetComponent<TileAction>();
                 if (tile != null) { tile.OnTouch(); }
             }
-            else if(Score.scorePoints != 0)
+            else if (Score.scorePoints != 0)
             {
-                //OnLose?.Invoke();
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            } 
+            }
         }
     }
 }

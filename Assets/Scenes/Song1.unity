@@ -5449,11 +5449,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1971099025}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 300, y: 400}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -100, y: -150}
   m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 1, y: 1}
 --- !u!114 &812105820
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5497,7 +5497,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 812105821}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1628705836}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: SetSFX
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &812105821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5565,6 +5577,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 627cce723ed3d664aa5313235ba88484, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonRectTransform: {fileID: 812105819}
 --- !u!4 &1133582564
 Transform:
   m_ObjectHideFlags: 0
@@ -5607,7 +5620,7 @@ AudioSource:
   m_GameObject: {fileID: 1628705834}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 2815040183031256642, guid: 7d8f6c2ec9f803e40a1b1739c29c8c6e, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 0.08
@@ -5707,6 +5720,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentSong: {fileID: 11400000, guid: 1b0d037d1e90f644eb4ddb2f30df61c8, type: 2}
+  onSound: {fileID: 21300000, guid: 1959efe2969646c40bf14e556f6860ca, type: 3}
+  offSound: {fileID: 21300000, guid: 510d3cfe8756dd645a5f26bf919a758c, type: 3}
+  sfxSprite: {fileID: 812105821}
+  audiomixer: {fileID: 24100000, guid: 7d8f6c2ec9f803e40a1b1739c29c8c6e, type: 2}
 --- !u!4 &1628705837
 Transform:
   m_ObjectHideFlags: 0
