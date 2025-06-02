@@ -20,7 +20,7 @@ public class TouchController : MonoBehaviour
 
             // Convertir posición de toque a posición en el mundo
             Vector3 worldPosition = mainCamera.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, mainCamera.nearClipPlane));
-            worldPosition.z = 0; // Para un juego 2D// Mover el objeto a la posición del toque
+            worldPosition.z = -1; // Para un juego 2D// Mover el objeto a la posición del toque
             transform.position = worldPosition;
             emitSettings.position = worldPosition;
             particle.Emit(emitSettings, 5);

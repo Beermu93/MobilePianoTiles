@@ -10,7 +10,7 @@ public class ButtonLogic : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
-    public void QuitButton()
+    public void OptionsButton()
     {
         Application.Quit();
     }

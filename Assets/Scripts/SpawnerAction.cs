@@ -48,7 +48,15 @@ public class SpawnerAction : MonoBehaviour
         }
     }
 
-     bool CheckForEmpty()
+    //private void UpdateLayout()
+    //{
+    //    if (Screen.width <= )
+    //{
+    //        .gameObject.transform.localScale = new Vector3(x, y, z);
+    //    }
+    //}
+
+    bool CheckForEmpty()
     {
         foreach (Transform child in transform)
         {
