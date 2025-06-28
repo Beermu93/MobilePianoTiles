@@ -15,4 +15,5 @@ EditorBuildSettings:
     path: Assets/Scenes/LoseScreen.unity
     guid: 389cfd42c121fef40a04d3a384624f3c
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: f47d44ed3dd645241a2ecab476f426bb, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 00a1ca3f4c2ea2648a96025f78d12c05, type: 2}
