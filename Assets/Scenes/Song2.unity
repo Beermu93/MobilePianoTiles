@@ -5791,7 +5791,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2393037bcf307d469849eddc2d7ab72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentSong: {fileID: 11400000, guid: 1b0d037d1e90f644eb4ddb2f30df61c8, type: 2}
+  currentSong: {fileID: 11400000, guid: 0a1416a972469f54b86212a282d60409, type: 2}
   onSound: {fileID: 21300000, guid: 1959efe2969646c40bf14e556f6860ca, type: 3}
   offSound: {fileID: 21300000, guid: 510d3cfe8756dd645a5f26bf919a758c, type: 3}
   sfxSprite: {fileID: 812105821}

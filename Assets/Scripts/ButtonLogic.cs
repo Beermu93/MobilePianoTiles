@@ -51,4 +51,9 @@ public class ButtonLogic : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
     }
+
+    public void LoadSceneByName(string name)
+    {
+        SceneManager.LoadScene(name);
+    }
 }
