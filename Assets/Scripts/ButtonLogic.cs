@@ -44,12 +44,14 @@ public class ButtonLogic : MonoBehaviour
 
     public void MainMenu()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(0);
     }
 
     public void Retry()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex - 1);
+        Time.timeScale = 1.0f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void LoadSceneByName(string name)

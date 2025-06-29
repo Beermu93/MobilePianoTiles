@@ -54,7 +54,8 @@ public class TouchHandler : MonoBehaviour
             }
             else if (Score.scorePoints != 0)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                LevelManager.instance.OnLevelEnded();
             }
         }
     }

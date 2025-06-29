@@ -13,7 +13,7 @@ public class Destroyer : MonoBehaviour
         {
             if(!tile.isClicked)
             {
-                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+                LevelManager.instance.OnLevelEnded();
             }
             Destroy(tile.gameObject);
         }
