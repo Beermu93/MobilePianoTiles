@@ -14,6 +14,11 @@ public class ButtonLogic : MonoBehaviour
     [SerializeField] private AudioMixer audiomixer;
     private bool isMusicOn = true;
     private bool isSFXOn = true;
+
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
     private void OnEnable() 
     {
         if(audiomixer == null) return;

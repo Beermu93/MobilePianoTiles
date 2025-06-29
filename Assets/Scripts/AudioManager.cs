@@ -15,6 +15,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Image sfxSprite;
     [SerializeField] private AudioMixer audiomixer;
     private bool isSFXOn = true;
+    public SongData CurrentSong => currentSong;
 
     private void Awake()
     {

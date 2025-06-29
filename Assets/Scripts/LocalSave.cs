@@ -8,29 +8,53 @@ using UnityEngine;
 
 public class GameData
 {
-    public int highScore;
+    public Dictionary<string, int> levelHighScores = new();
 }
 
 public static class LocalSave
 {
     private static string localPath => Application.persistentDataPath + "savedata.json";
 
-    public static void SaveLocal(int score)
+    private static GameData cachedData;
+
+    private static GameData LoadData()
     {
-        int currentLocal = LoadLocal();
-        if (score > currentLocal)
+        if (cachedData != null)
+            return cachedData;
+
+        if (File.Exists(localPath))
         {
-            GameData data = new GameData { highScore = score };
+            string json = File.ReadAllText(localPath);
+            cachedData = JsonUtility.FromJson<GameData>(json);
+        }
+        else
+        {
+            cachedData = new GameData();
+        }
+
+        return cachedData;
+    }
+
+    public static void SaveLocal(string levelId, int score)
+    {
+        GameData data = LoadData();
+
+        if (!data.levelHighScores.ContainsKey(levelId) || score > data.levelHighScores[levelId])
+        {
+            data.levelHighScores[levelId] = score;
             string json = JsonUtility.ToJson(data, true);
             File.WriteAllText(localPath, json);
         }
     }
 
-    public static int LoadLocal()
+    public static int LoadLocal(string levelId)
     {
-        if (!File.Exists(localPath)) return 0;
-        string json = File.ReadAllText(localPath);
-        GameData data = JsonUtility.FromJson<GameData>(json);
-        return data.highScore;
+        GameData data = LoadData();
+        return data.levelHighScores.TryGetValue(levelId, out var score) ? score : 0;
+    }
+
+    public static Dictionary<string, int> GetAllLocalScores()
+    {
+        return LoadData().levelHighScores;
     }
 }

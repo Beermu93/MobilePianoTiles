@@ -12,9 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Song1.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
   - enabled: 1
-    path: Assets/Scenes/LoseScreen.unity
-    guid: 389cfd42c121fef40a04d3a384624f3c
-  - enabled: 1
     path: Assets/Scenes/Song2.unity
     guid: 11a325e2500dcf949923ec93595371f7
   - enabled: 1

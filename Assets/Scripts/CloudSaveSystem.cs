@@ -5,7 +5,7 @@ using Unity.Services.Authentication;
 using Unity.Services.CloudSave;
 using UnityEngine;
 
-public class CloudSaveSystem : MonoBehaviour
+public class CloudSaveSystem
 {
     private static bool isInitialized = false;
 
@@ -28,7 +28,9 @@ public class CloudSaveSystem : MonoBehaviour
 
     public static async Task SaveScoreAsync(int score)
     {
-        LocalSave.SaveLocal(score);
+        string levelKey = AudioManager.Instance.CurrentSong.SongName;
+
+        LocalSave.SaveLocal(levelKey, score);
         await InitializeServicesAsync();
 
         int currentHighScore = await LoadHighScoreAsync();
@@ -36,7 +38,7 @@ public class CloudSaveSystem : MonoBehaviour
         {
             var data = new Dictionary<string, object>
             {
-                { "highScore", score }
+                { levelKey, score }
             };
 
             try
@@ -54,21 +56,22 @@ public class CloudSaveSystem : MonoBehaviour
     {
         await InitializeServicesAsync();
 
+        var levelKey = AudioManager.Instance.CurrentSong.SongName;
+
         try
         {
-            var keys = new HashSet<string> { "highScore" };
+            var keys = new HashSet<string> { levelKey };
             var data = await CloudSaveService.Instance.Data.Player.LoadAsync(keys);
 
-            if (data.TryGetValue("highScore", out var value))
+            if (data.TryGetValue(levelKey, out var value))
             {
                 int score = value.Value.GetAs<int>();
                 return score;
             }
         }
-        catch (System.Exception ex)
+        catch (System.Exception)
         {
-            Debug.LogError("Error cargando datos de la nube: " + ex.Message);
-            return LocalSave.LoadLocal();
+            return LocalSave.LoadLocal(levelKey);
         }
 
         return 0;
