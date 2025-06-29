@@ -37,15 +37,20 @@ public class ButtonLogic : MonoBehaviour
         SoundConfig.SetSFX(isSFXOn, audiomixer, sfxSprite, onSound, offSound);
     }
 
-    public void StartButton()
+    public void Song1()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        SceneManager.LoadScene(1);
     }
 
-    //public void Levels()
-    //{
-    //    SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
-    //}
+    public void Song2()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void Song3()
+    {
+        SceneManager.LoadScene(3);
+    }
 
     public void MainMenu()
     {
