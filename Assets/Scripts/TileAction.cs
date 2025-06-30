@@ -18,7 +18,7 @@ public class TileAction : MonoBehaviour
         if (isClicked) return;
         isClicked = true;
         AudioManager.Instance.PlayNote();
-        FindObjectOfType<Score>().ScoreUpdate(scoreValue);
+        if (FindObjectOfType<Score>()) { FindObjectOfType<Score>().ScoreUpdate(scoreValue); }
         gameObject.GetComponent<SpriteRenderer>().color = Color.yellow;
     }
 }

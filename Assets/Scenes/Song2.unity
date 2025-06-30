@@ -5954,6 +5954,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   loseScreenPrefab: {fileID: 1295042143617872924, guid: 6c36f890b1653af4fa77f0effd34f3bf, type: 3}
+  scoreCanvas: {fileID: 1971099024}
 --- !u!1 &1808521792
 GameObject:
   m_ObjectHideFlags: 0

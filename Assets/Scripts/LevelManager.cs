@@ -6,6 +6,7 @@ public class LevelManager : MonoBehaviour
 {
     public static LevelManager instance;
     [SerializeField] private GameObject loseScreenPrefab;
+    [SerializeField] private Canvas scoreCanvas;
     private GameObject loseScreenInstance;
 
     private void Awake()
@@ -20,5 +21,6 @@ public class LevelManager : MonoBehaviour
         Time.timeScale = 0f;
         if (loseScreenInstance != null) { return; }
         loseScreenInstance = Instantiate(loseScreenPrefab);
+        scoreCanvas.gameObject.SetActive(false);
     }
 }
